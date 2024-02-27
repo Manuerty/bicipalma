@@ -8,12 +8,12 @@ public class Estacion {
     private final int id;
     private final String direccion;
 
-    private final Anclajes NumAnclajes;
+    private final Anclajes anclajes;
 
     public Estacion(int id, String direccion, int numAnclajes){
         this.id = id;
         this.direccion = direccion;
-        this.NumAnclajes = new Anclajes(numAnclajes);
+        this.anclajes = new Anclajes(numAnclajes);
     }
     private int getId(){
         return this.id;
@@ -22,31 +22,30 @@ public class Estacion {
         return this.direccion;
     }
 
-    private int getNumAnclajes(){
-        return  this.NumAnclajes
-    }
-
     @Override
     public String toString() {
         return super.toString();
     }
 
-    private Anclaje anclajes(){
-    return ;
+    private Anclaje[] anclajes(){
+        return this.anclajes.anclajes();
     }
     private int numAnclajes(){
-        return 0;
+        return this.anclajes.numAnclajes();
     }
 
     public void consultarEstacion(){
         System.out.println("id" + getId());
         System.out.println("Direccion" + getDireccion());
-        System.out.println("Numero de Anclajes" + getNumAnclajes());
-
+        System.out.println("Numero de Anclajes" + numAnclajes());
     }
 
     public int anclajesLibres(){
-        return 0;
+        int anclajesLibres = 0;
+        for (Anclaje anclaje : anclajes()){
+            anclajesLibres = anclaje.isOcupado()? anclajesLibres: ++anclajesLibres;
+        }
+        return  anclajesLibres;
     }
 
     public void anclarBicicleta(Bicicleta bici){

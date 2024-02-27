@@ -6,41 +6,40 @@ public class Anclajes {
     private Anclaje[] anclajes;
     Anclajes (int numAnclajes){
         this.anclajes = new Anclaje[numAnclajes];
+        crearAnclajes();
     }
 
-    private void crarAnclajes(){
+    private void crearAnclajes(){
+            for ( int i = 0; i < anclajes.length; i++){
+                this.anclajes[i] = new Anclaje(false, null);
+            }
     }
 
-    Anclaje anclajes(){
-
+    Anclaje[] anclajes(){
+            return  this.anclajes;
     }
 
     int numAnclajes(){
-    return 0;
+        return this.anclajes.length;
     }
 
-    void ocuparAnclaje(int id, Bicicleta bici){
-
-
+    void ocuparAnclaje(int posicion, Bicicleta bici){
+         this.anclajes[posicion].anclarBici(bici);
     }
 
-    boolean isAnclajeOcupado(int id){
-    return true;
+    boolean isAnclajeOcupado(int posicion){
+        return this.anclajes[posicion].isOcupado();
     }
 
-    void liberarAnclaje(int id){
-
+    void liberarAnclaje(int posicion){
+         this.anclajes[posicion].liberarBici();
     }
 
-    Bicicleta getBici (int id){
-
-    }
-
-    int selecionarAnclaje(){
-    return 0;
+    Bicicleta getBici (int posicion){
+        return this.anclajes[posicion].getBici();
     }
 
     public String toString() {
-        return ;
+        return "Número de ancñajes: " + Integer.toString(numAnclajes());
     }
 }
