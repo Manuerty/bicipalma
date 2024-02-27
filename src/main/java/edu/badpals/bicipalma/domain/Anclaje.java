@@ -11,21 +11,22 @@ public class Anclaje {
     }
 
     boolean isOcupado(){
-    return false;
+        return this.ocupado;
     }
 
     Bicicleta getBici(){
-        return ;
+        return this.bici;
     }
 
     void anclarBici (Bicicleta bici){
-
+        this.bici = bici;
+        this.ocupado = true;
     }
 
 
     void liberarBici(){
-
-
+        this.bici = null;
+        this.ocupado = false;
     }
 
     @Override
